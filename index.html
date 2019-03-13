@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <button id="new-game-button">Nowa gra</button>
+    <div class="row">
+        <button class='player-move' data-option="papier" id="PAPER" data-move="paper">PAPER</button>
+
+        <button class='player-move' data-option="kamień" id="ROCK" data-move="rock">ROCK</button>
+
+        <button class='player-move' data-option="nożyczki" id="SCISSORS" data-move="scissors">SCISSORS</button>
+
+    </div>
+
+
+    <div class="output" id="output">Because you love the game!</div>
+
+    <div class="overlay" id="modal-overlay">
+        <div class="modal" id="modal-one">
+            <a href="#" class="close">x</a>
+            <header>WYNIK GRY</header>
+            <div class="content">
+                <div class="progress">
+                    <h3>Aktualne wyniki</h3>
+                    <p class="rounds_numbers">liczba gier: <span>0</span></p>
+                    <p class="wins">wygranych: <span>0</span></p>
+                    <p class="losses">przegranych: <span>0</span></p>
+                    <p class="draws">remisów: <span>0</span></p>
+                </div>
+                <div class="output" id="output">Because you love the game!</div>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
