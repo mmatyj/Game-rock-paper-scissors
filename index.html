@@ -23,18 +23,24 @@
 
     <div class="output" id="output">Because you love the game!</div>
 
-    <div class="overlay" id="modal-overlay">
-        <div class="modal" id="modal-one">
-            <a href="#" class="close">x</a>
-            <header>WYNIK GRY</header>
-            <div class="content">
-                <div class="progress">
-                    <h3>Aktualne wyniki</h3>
-                    <p class="rounds_numbers">liczba gier: <span>0</span></p>
-                    <p class="wins">wygranych: <span>0</span></p>
-                    <p class="losses">przegranych: <span>0</span></p>
-                    <p class="draws">remisów: <span>0</span></p>
-                </div>
+    <header>WYNIK GRY</header>
+    <div class="content">
+        <div class="progress">
+            <table id="table">
+                <tr>
+                    <th>Numer rundy</th>
+                    <th>Ruch gracza</th>
+                    <th>Ruch komputera</th>
+                    <th>Wynik rundy</th>
+                    <th>Wynik gry po rundzie</th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="overlay" id="modal-overlay">
+            <div class="modal" id="modal-one">
+                <a href="#" class="close">x</a>
+
                 <div class="output" id="output">Because you love the game!</div>
             </div>
         </div>

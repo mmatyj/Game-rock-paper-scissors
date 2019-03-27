@@ -3,13 +3,15 @@ var output = document.querySelectorAll('.output');
 const buttons = document.querySelectorAll('.player-move');
 
 let message;
+let newGameWinningRounds;
 
 const gameParams = {
     winningRounds: null,
     roundNumber: 0,
     playerScore: 0,
     computerScore: 0,
-    draws: 0
+    draws: 0,
+    progres: []
 }
 
 document.getElementById('new-game-button').addEventListener('click', newGame);
@@ -46,23 +48,23 @@ function playerMove(playerChoice) {
     gameParams.roundNumber++;
 
     message = 'Runda ' + gameParams.roundNumber + ': ';
-    document.querySelector('p.rounds_numbers span').textContent = gameParams.roundNumber;
+    // document.querySelector('p.rounds_numbers span').textContent = gameParams.roundNumber;
 
     switch (checkResult(playerChoice, computerChoice)) {
         case 'draw':
             gameParams.draws++;
             message += 'Remis!';
-            document.querySelector('p.draws span').textContent = gameParams.draws;
+            // document.querySelector('p.draws span').textContent = gameParams.draws;
             break;
         case 'win':
             gameParams.playerScore++;
             message += 'Wygrałeś!';
-            document.querySelector('p.wins span').textContent = gameParams.playerScore;
+            // document.querySelector('p.wins span').textContent = gameParams.playerScore;
             break;
         case 'loss':
             gameParams.computerScore++;
             message += 'Przegrałeś!'
-            document.querySelector('p.losses span').textContent = gameParams.computerScore;
+            // document.querySelector('p.losses span').textContent = gameParams.computerScore;
             break;
     }
 
@@ -81,10 +83,36 @@ function playerMove(playerChoice) {
         gameParams.winningRounds = null;
 
     }
+    // DODAWANIE OBIEKTÓW DO TABELI
+    gameParams.progres.push({
+        roundNumber: gameParams.roundNumber,
+        playerChoice: playerChoice,
+        computerChoice: computerChoice,
+        playerScore: gameParams.playerScore,
+        computerScore: gameParams.computerScore,
+        winningRounds: gameParams.winningRounds
+    })
+    //  DODAWANIE TABELI 
+    function addTable() {
+        var myTable = document.getElementById('table');
+        for (var i = 0; i < newGameWinningRounds; i++) {
+            var tr = document.createElement('TR');
+            myTable.appendChild(tr);
+
+            var td = document.createElement('TD');
+            tr.appendChild(td);
+            // td.textContent = gameParams.roundNumber;
+        }
+
+    }
+
+
 }
 
+
+
 function newGame() {
-    const newGameWinningRounds = parseInt(window.prompt('Do ilu gramy?'));
+    newGameWinningRounds = parseInt(window.prompt('Do ilu gramy?'));
 
     if (isNaN(newGameWinningRounds) || !newGameWinningRounds) {
         return alert('Podaj liczbę!')
@@ -95,6 +123,8 @@ function newGame() {
     gameParams.computerScore = 0;
     output[0].innerHTML = 'Zaczynamy! Gramy do ' + gameParams.winningRounds + ' wygranych!';
 }
+
+
 
 // MODALS
 

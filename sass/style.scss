@@ -70,8 +70,13 @@ button:hover {
 
 .progress {
     display: inline-block;
-    width: 48%;
-    overflow: hidden;
+    width: 100%;
+
     margin: 40px auto 0;
     text-align: center;
+
+    table {
+        border: 1px solid black;
+        width: 80%;
+    }
 }
