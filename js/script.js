@@ -5,12 +5,17 @@ const buttons = document.querySelectorAll('.player-move');
 let message;
 let newGameWinningRounds;
 
+let playerChoice;
+
 const gameParams = {
     winningRounds: null,
     roundNumber: 0,
+    playerChoice: '',
     playerScore: 0,
+    computerChoice: '',
     computerScore: 0,
     draws: 0,
+    whoWon: '',
     progres: []
 }
 
@@ -20,8 +25,10 @@ buttons.forEach(button =>
     button.addEventListener('click', handleButtonClick)
 )
 
+
 function handleButtonClick() {
-    const playerChoice = this.dataset.option;
+    playerChoice = this.dataset.option;
+    gameParams.playerChoice = playerChoice;
     playerMove(playerChoice)
 }
 
@@ -44,27 +51,27 @@ function playerMove(playerChoice) {
         return false;
     }
 
-    const computerChoice = getComputerChoice();
+    let computerChoice = getComputerChoice();
+    gameParams.computerChoice = computerChoice;
     gameParams.roundNumber++;
 
     message = 'Runda ' + gameParams.roundNumber + ': ';
-    // document.querySelector('p.rounds_numbers span').textContent = gameParams.roundNumber;
 
     switch (checkResult(playerChoice, computerChoice)) {
         case 'draw':
             gameParams.draws++;
             message += 'Remis!';
-            // document.querySelector('p.draws span').textContent = gameParams.draws;
+            gameParams.whoWon = 'Remis';
             break;
         case 'win':
             gameParams.playerScore++;
             message += 'Wygrałeś!';
-            // document.querySelector('p.wins span').textContent = gameParams.playerScore;
+            gameParams.whoWon = 'wygrałeś';
             break;
         case 'loss':
             gameParams.computerScore++;
             message += 'Przegrałeś!'
-            // document.querySelector('p.losses span').textContent = gameParams.computerScore;
+            gameParams.whoWon = 'przegrałeś';
             break;
     }
 
@@ -86,23 +93,33 @@ function playerMove(playerChoice) {
     // DODAWANIE OBIEKTÓW DO TABELI
     gameParams.progres.push({
         roundNumber: gameParams.roundNumber,
-        playerChoice: playerChoice,
-        computerChoice: computerChoice,
-        playerScore: gameParams.playerScore,
-        computerScore: gameParams.computerScore,
+        whoWon: gameParams.whoWon,
         winningRounds: gameParams.winningRounds
     })
     //  DODAWANIE TABELI 
-    function addTable() {
-        var myTable = document.getElementById('table');
-        for (var i = 0; i < newGameWinningRounds; i++) {
-            var tr = document.createElement('TR');
-            myTable.appendChild(tr);
+    var myTable = document.getElementById('table');
+    var tbody = myTable.querySelector('tbody');
 
-            var td = document.createElement('TD');
-            tr.appendChild(td);
-            // td.textContent = gameParams.roundNumber;
-        }
+    for (var i = 0; i < gameParams.progres.length; i++) {
+        var row = document.createElement('tr');
+
+        var roundNumber = document.createElement('td')
+        roundNumber.innerText = gameParams.roundNumber;
+
+        var playerChoice = document.createElement('td')
+        playerChoice.innerText = gameParams.playerChoice;
+
+        var computerChoiceInRound = document.createElement('td')
+        computerChoiceInRound.innerText = gameParams.computerChoice;
+
+        var roundResult = document.createElement('td')
+        roundResult.innerText = gameParams.playerScore + ':' + gameParams.computerScore;
+
+        var whoWon = document.createElement('td')
+        whoWon.innerText = gameParams.whoWon;
+
+        row.append(roundNumber, playerChoice, computerChoice, roundResult, whoWon)
+        tbody.append(row);
 
     }
 
