@@ -47,8 +47,7 @@ button:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate3d(-50%, -50%, 0);
-          transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
 }
 
 .modal.show {
@@ -69,6 +68,10 @@ button:hover {
   border-bottom: 1px solid black;
 }
 
+.modal table {
+  margin: 0 auto;
+}
+
 .progress {
   display: inline-block;
   width: 100%;
@@ -80,4 +83,5 @@ button:hover {
   border: 1px solid black;
   width: 80%;
 }
+
 /*# sourceMappingURL=style.css.map */

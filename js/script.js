@@ -88,6 +88,7 @@ function playerMove(playerChoice) {
         message += ' Wynik gry: <br> Gracz ' + gameParams.playerScore + ' : ' + gameParams.computerScore + ' Komputer.';
 
         gameParams.winningRounds = null;
+        gameParams.progres = null;
 
     }
     // DODAWANIE OBIEKTÓW DO TABELI
@@ -123,11 +124,9 @@ function playerMove(playerChoice) {
         var whoWon = document.createElement('td')
         whoWon.innerText = gameParams.progres[i].whoWon;
 
-        row.append(roundNumber, playerChoiceInRound, computerChoice, roundResult, whoWon)
-        tbody.append(row);
-
     }
-
+    row.append(roundNumber, playerChoiceInRound, computerChoice, roundResult, whoWon)
+    tbody.append(row);
 
 
 }
