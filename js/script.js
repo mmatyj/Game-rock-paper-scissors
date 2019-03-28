@@ -93,9 +93,14 @@ function playerMove(playerChoice) {
     // DODAWANIE OBIEKTÓW DO TABELI
     gameParams.progres.push({
         roundNumber: gameParams.roundNumber,
+        playerChoice: gameParams.playerChoice,
+        computerChoiceInRound: gameParams.computerChoice,
+        playerScore: gameParams.playerScore,
+        computerScore: gameParams.computerScore,
         whoWon: gameParams.whoWon,
         winningRounds: gameParams.winningRounds
     })
+
     //  DODAWANIE TABELI 
     var myTable = document.getElementById('table');
     var tbody = myTable.querySelector('tbody');
@@ -104,28 +109,28 @@ function playerMove(playerChoice) {
         var row = document.createElement('tr');
 
         var roundNumber = document.createElement('td')
-        roundNumber.innerText = gameParams.roundNumber;
+        roundNumber.innerText = gameParams.progres[i].roundNumber;
 
-        var playerChoice = document.createElement('td')
-        playerChoice.innerText = gameParams.playerChoice;
+        var playerChoiceInRound = document.createElement('td')
+        playerChoiceInRound.innerText = gameParams.progres[i].playerChoice;
 
         var computerChoiceInRound = document.createElement('td')
-        computerChoiceInRound.innerText = gameParams.computerChoice;
+        computerChoiceInRound.innerText = gameParams.progres[i].computerChoice;
 
         var roundResult = document.createElement('td')
-        roundResult.innerText = gameParams.playerScore + ':' + gameParams.computerScore;
+        roundResult.innerText = gameParams.progres[i].playerScore + ':' + gameParams.progres[i].computerScore;
 
         var whoWon = document.createElement('td')
-        whoWon.innerText = gameParams.whoWon;
+        whoWon.innerText = gameParams.progres[i].whoWon;
 
-        row.append(roundNumber, playerChoice, computerChoice, roundResult, whoWon)
+        row.append(roundNumber, playerChoiceInRound, computerChoice, roundResult, whoWon)
         tbody.append(row);
 
     }
 
 
-}
 
+}
 
 
 function newGame() {
