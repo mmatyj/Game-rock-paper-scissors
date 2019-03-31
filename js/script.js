@@ -88,7 +88,6 @@ function playerMove(playerChoice) {
         message += ' Wynik gry: <br> Gracz ' + gameParams.playerScore + ' : ' + gameParams.computerScore + ' Komputer.';
 
         gameParams.winningRounds = null;
-        gameParams.progres = null;
 
     }
     // DODAWANIE OBIEKTÓW DO TABELI
@@ -142,6 +141,7 @@ function newGame() {
     gameParams.roundNumber = 0;
     gameParams.playerScore = 0;
     gameParams.computerScore = 0;
+    gameParams.progres = [];
     output[0].innerHTML = 'Zaczynamy! Gramy do ' + gameParams.winningRounds + ' wygranych!';
 }
 
