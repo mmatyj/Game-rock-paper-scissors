@@ -87,7 +87,6 @@ function playerMove(playerChoice) {
         showModal()
         message += ' Wynik gry: <br> Gracz ' + gameParams.playerScore + ' : ' + gameParams.computerScore + ' Komputer.';
 
-        gameParams.winningRounds = null;
 
     }
     // DODAWANIE OBIEKTÓW DO TABELI
@@ -167,6 +166,7 @@ for (var i = 0; i < modalLinks.length; i++) {
 var hideModal = function (event) {
     event.preventDefault();
     document.querySelector('#modal-overlay').classList.remove('show');
+    location.reload();
 };
 
 var closeButtons = document.querySelectorAll('.modal .close');
